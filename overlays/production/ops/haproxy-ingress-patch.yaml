@@ -3,13 +3,16 @@ kind: Ingress
 metadata:
   name: haproxy-ingress
   namespace: jitsi
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt"  
 spec:
   tls:
   - hosts:
-    - jitsi.messenger.schule
-    secretName: jitsi-messenger-schule-tls
+    - connectlane.co.in
+    secretName: connectlane.co.in-tls
   rules:
-    - host: jitsi.messenger.schule
+    - host: connectlane.co.in
       http:
         paths:
         - path: /
